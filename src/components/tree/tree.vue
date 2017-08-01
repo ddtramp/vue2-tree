@@ -114,6 +114,9 @@
                 this.itemsShow = !this.itemsShow
             },
             handlecheckedChange (node) {
+                if (!this.options.showCheckbox) {
+                    return
+                }
                 if (this.options.halfCheckedStatus) {
                     this.store.changeCheckHalfStatus(node)
                 } else {
@@ -187,7 +190,7 @@
             dealTreeData () {
                 this.store = new TreeStore({
                     root: (this.generateKey(this.treeData, '0') || []).slice(0),
-                    last: null
+                    last: this.store.last
                 })
             }
 

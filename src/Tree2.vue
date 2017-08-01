@@ -47,6 +47,7 @@
                     // function  handle display add button
                     // return true or false
                     dynamicAddFilter: (node) => {
+                        return true
                         if (node.type === 1 || node.type === 2) {
                             return true
                         }
@@ -135,9 +136,21 @@
                         parentId: null,
                         visible: true,
                         searched: false
+                    },
+                    {
+                        id: 5,
+                        label: '一级节点',
+                        type: 4
                     }
                 ]
-//                this.treeData1 = generateKey(treeData, 0);
+
+                for (let i = 6; i < 50; i++) {
+                    treeData.push(Object.assign({}, {
+                        id: 5,
+                        label: '一级节点',
+                        type: 4
+                    }, { id: i}))
+                }
                 this.treeData1 = treeData
 
             },
@@ -220,7 +233,6 @@
                     // todo sent data to sever
                     delete item.dynamicAdd // 删除属性
                     Vue.set(item, 'label', e.target.value)
-                    e.target.value = ''
                     setTimeout(() => {
                         resolve(item)
                     }, 1000)
