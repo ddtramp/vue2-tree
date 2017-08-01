@@ -140,17 +140,29 @@
                     {
                         id: 5,
                         label: '一级节点',
-                        type: 4
+                        open: false,
+                        type: 4,
+                        checked: false,
+                        nodeSelectNotAll: false,
+                        parentId: null,
+                        visible: true,
+                        searched: false
                     }
                 ]
 
                 for (let i = 6; i < 50; i++) {
                     treeData.push(Object.assign({}, {
-                        id: 5,
                         label: '一级节点',
-                        type: 4
+                        type: 4,
+
+                        open: false,
+                        checked: false,
+                        nodeSelectNotAll: false,
+                        visible: true,
+                        searched: false
                     }, { id: i}))
                 }
+
                 this.treeData1 = treeData
 
             },
@@ -205,10 +217,6 @@
                 let node = {
                     id: 2,
                     label: '一级节点',
-                    open: false,
-                    checked: false,
-                    nodeSelectNotAll: false,
-                    parentId: null,
                     visible: true,
                     searched: false
                 }
@@ -217,7 +225,7 @@
                 }
                 parent.open = true
 
-                parent.children.splice(0, 0, Object.assign({}, { dynamicAdd: true, loaded: true }, node))
+                parent.children.splice(0, 0, Object.assign({}, node, { dynamicAdd: true, loaded: true }))
 
 //                generateKey(parent.children, parent.key) // regenerate key
 
