@@ -148,34 +148,34 @@
             },
             walkCheckBox(node){
                 if (node.nodeSelectNotAll) {
-                    Vue.set(node, 'checked', false)
+                    this.$set(node, 'checked', false)
                     this.handlecheckedChange(node)
                 }
             },
             checkBoxChange (node, e) {
-                Vue.set(node, 'checked', e.target.checked)
+                this.$set(node, 'checked', e.target.checked)
                 this.handlecheckedChange(node)
 
             },
             handleNodeExpand (node, index) {
                 if (node.open) {
-                    Vue.set(node, 'open', false)
-                    return false
+                    this.$set(node, 'open', false)
+                    return
                 }
                 if (node.hasOwnProperty('children') && node.children && node.children.length > 0) {
-                    Vue.set(node, 'open', true)
+                    this.$set(node, 'open', true)
                     return
                 }
 
                 if (!node.open  && this.options.lazy && this.options.load) {
 
                     try {
-                        Vue.set(node, 'loading', true)
+                        this.$set(node, 'loading', true)
 
                         this.options.load(node, index).then((d) => {
-                            Vue.set(node, 'open', true)
-                            Vue.set(node, 'loaded', true)
-                            Vue.set(node, 'loading', false)
+                            node.open = true
+                            node.loaded = true
+                            this.$set(node, 'loading', false)
 
                             if (this.options.showCheckbox) {
                                 this.handlecheckedChange(node)
@@ -196,18 +196,18 @@
                 if (this.tree.store.last) {
                     if (this.tree.store.last.key === node.key) {
                         this.tree.store.last.checked = !this.tree.store.last.checked
-                        Vue.set(node, 'checked', this.tree.store.last.checked)
+                        this.$set(node, 'checked', this.tree.store.last.checked)
                     } else {
                         if ( !this.options.showCheckbox ) {
-                            Vue.set(this.tree.store.last, 'checked', false)
+                            this.$set(this.tree.store.last, 'checked', false)
                         }
 
-                        Vue.set(node, 'checked', !node.checked)
+                        this.$set(node, 'checked', !node.checked)
                         this.tree.store.last = node
                     }
                 } else {
                     this.tree.store.last = node
-                    Vue.set(node, 'checked', true)
+                    this.$set(node, 'checked', true)
 
                 }
                 this.tree.$emit('node-click', node)
@@ -258,7 +258,10 @@
                 try {
                     let d = await this.options.dynamicSaveNode(item, e)
 //                    this.tree.store.setData(d)
-                    this.handlecheckedChange(item)
+                    e.target.value = ''
+                    if (this.options.showCheckbox) {
+                        this.handlecheckedChange(item)
+                    }
                 } catch (e) {
                     console.log('Tree: save node error')
                 }

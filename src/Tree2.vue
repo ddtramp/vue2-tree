@@ -47,6 +47,7 @@
                     // function  handle display add button
                     // return true or false
                     dynamicAddFilter: (node) => {
+                        return true
                         if (node.type === 1 || node.type === 2) {
                             return true
                         }
@@ -135,9 +136,33 @@
                         parentId: null,
                         visible: true,
                         searched: false
+                    },
+                    {
+                        id: 5,
+                        label: '一级节点',
+                        open: false,
+                        type: 4,
+                        checked: false,
+                        nodeSelectNotAll: false,
+                        parentId: null,
+                        visible: true,
+                        searched: false
                     }
                 ]
-//                this.treeData1 = generateKey(treeData, 0);
+
+                for (let i = 6; i < 50; i++) {
+                    treeData.push(Object.assign({}, {
+                        label: '一级节点',
+                        type: 4,
+
+                        open: false,
+                        checked: false,
+                        nodeSelectNotAll: false,
+                        visible: true,
+                        searched: false
+                    }, { id: i}))
+                }
+
                 this.treeData1 = treeData
 
             },
@@ -192,10 +217,6 @@
                 let node = {
                     id: 2,
                     label: '一级节点',
-                    open: false,
-                    checked: false,
-                    nodeSelectNotAll: false,
-                    parentId: null,
                     visible: true,
                     searched: false
                 }
@@ -204,7 +225,7 @@
                 }
                 parent.open = true
 
-                parent.children.splice(0, 0, Object.assign({}, { dynamicAdd: true, loaded: true }, node))
+                parent.children.splice(0, 0, Object.assign({}, node, { dynamicAdd: true, loaded: true }))
 
 //                generateKey(parent.children, parent.key) // regenerate key
 
@@ -220,7 +241,6 @@
                     // todo sent data to sever
                     delete item.dynamicAdd // 删除属性
                     Vue.set(item, 'label', e.target.value)
-                    e.target.value = ''
                     setTimeout(() => {
                         resolve(item)
                     }, 1000)
