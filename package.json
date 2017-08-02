@@ -11,8 +11,7 @@
     "url": "https://github.com/ddtramp/vue2-tree/issues"
   },
   "homepage": "https://github.com/ddtramp/vue2-tree.git",
-  "main": "./dist/vue2-tree.min.js",
-  "module": "./src/index.js",
+  "main": "dist/vue2-tree.min.js",
   "scripts": {
     "dev": "node build/dev-server.js",
     "start": "node build/dev-server.js",
