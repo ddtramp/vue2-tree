@@ -57,7 +57,6 @@
         },
         created () {
             this.isTree = true
-            this.dealTreeData()
 
             this.checkOptions() // check options
 
@@ -78,6 +77,9 @@
                 leafIcon () { return '' }          // not required
 
                 }, this.options)
+
+            this.dealTreeData()
+
         },
 
         watch: {
@@ -191,6 +193,7 @@
             dealTreeData () {
                 this.store = new TreeStore({
                     root: (this.generateKey(this.treeData, '0') || []).slice(0),
+                    options: Object.assign({}, this.treeNodeOptions),
                     last: this.store.last
                 })
             }

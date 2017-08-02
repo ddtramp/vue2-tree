@@ -1,4 +1,3 @@
-const pinyin = require('chinese-to-pinyin')
 import Vue from 'vue'
 export default class TreeStore {
     constructor(options) {
@@ -15,7 +14,13 @@ export default class TreeStore {
             }
         }
         _traverseNodes(this.root)
+
+        this.pinyin = () => ''
+        if (this.options.showCheckbox) {
+            this.pinyin = require('chinese-to-pinyin')
+        }
     }
+
 
     /**
      * https://github.com/alonesuperman update this method
@@ -215,8 +220,9 @@ export default class TreeStore {
         }
 
         const _syncNodeStatus = (node) => {
-            if (node.parentId) {
-                let parentNode = this.getNode(node.parentId)
+            let keys = this.__parseKey(node.key)
+            if (keys.parent) {
+                let parentNode = this.getNode(keys.parent)
                 if (node.visible) {
                     parentNode.visible = node.visible
                     _syncNodeStatus(parentNode)
@@ -242,7 +248,7 @@ export default class TreeStore {
         if (/^[a-zA-Z]/.test(keyworld)) {
             return keyworld
         }
-        let fullpinyin = pinyin(keyworld, {
+        let fullpinyin = this.pinyin(keyworld, {
             filterChinese: true,
             noTone: true
         })
