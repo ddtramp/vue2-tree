@@ -15,8 +15,8 @@
     import Vue from 'vue';
     import axios from 'axios';
     import {ZTree, generateKey, getParentNode } from './index'
-    //  import {ZTree} from './../dist/vue2-tree.min'
-    //  import './../dist/vue2-tree.min.css'
+//      import {ZTree} from './../dist/vue2-tree.min'
+//      import './../dist/vue2-tree.min.css'
     Vue.use(ZTree)
 
     const Tree2 = {

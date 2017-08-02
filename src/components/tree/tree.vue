@@ -5,12 +5,13 @@
             <span class="icon search"></span>
         </div>
         <div class="root">
-            <i
-                class="icon iconfont"
-                :class="[itemsShow ? treeNodeOptions.iconClass.open : treeNodeOptions.iconClass.close ]"
-                :style="treeNodeOptions.iconStyle"
-                @click="rootIconClick"
-            >
+
+             <i
+                 class="icon iconfont"
+                 :class="[itemsShow ? treeNodeOptions.iconClass.open : treeNodeOptions.iconClass.close ]"
+                 :style="treeNodeOptions.iconStyle"
+                 @click="rootIconClick"
+             >
 
             </i>
             {{ treeNodeOptions.rootName }}
@@ -199,7 +200,7 @@
     }
 
 </script>
-<style lang="scss"  scoped>
+<style lang="scss" >
     @import './assets/iconfont/iconfont.css';
 
     .halo-tree * {
@@ -211,8 +212,9 @@
         left: -19px;
         cursor: default;
         user-select: none;
+        font-size: 14px;
         i {
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
         }
     }
@@ -241,9 +243,6 @@
     }
 
     .halo-tree .icon {
-        display: inline-block;
-        margin-right: 10px;
-        vertical-align: middle;
     }
 
     .halo-tree .search {
