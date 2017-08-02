@@ -178,6 +178,8 @@ and when some new feature is test ok, i will pull a new request to halower
 
 ## Update History
 
+* fix search bug, and require chinesetopinyin package           02082017
+
 * fix generateKey method bug                                    31072017
 
 * add label key property, set the label field                   28072017
