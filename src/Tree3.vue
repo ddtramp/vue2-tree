@@ -30,8 +30,6 @@
                     lazy: true,
                     load: this.loadingChild,
 
-                    showSearch: false,
-
                     rootName: '我的组织',
 
                     iconClass: {
@@ -62,13 +60,9 @@
                     dynamicSaveNode: this.saveNode,
                     // function handle
                     // return String
-                    leafIcon: this.leafIcon,
+                    leafIcon: this.leafIcon
 
-                    search: {
-                        useInitial: true,
-                        useEnglish: false,
-                        customFilter: null
-                    }
+
                 },
                 treeData1: []
             }

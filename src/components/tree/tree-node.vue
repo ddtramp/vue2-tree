@@ -1,7 +1,6 @@
 <template>
     <ul>
         <li v-for='(item, index) of nodeData'
-            v-show="!item.hasOwnProperty('visible') || item.visible"
             :key="item.key"
 
         >
@@ -23,7 +22,7 @@
             </div>
             <div v-show="!item.hasOwnProperty('dynamicAdd')"
                  class="item-handle-area"
-                 :class="{'node-selected':(item.checked && !options.showCheckbox) || item.searched }"
+                 :class="{'node-selected':(item.checked && !options.showCheckbox) }"
                  @click="handleNode(item)"
 
             >
@@ -428,12 +427,6 @@
         position: absolute;
         top: 8px;
         right: 0;
-    }
-
-    .search {
-        width: 14px;
-        height: 14px;
-        background-image: url("assets/search.png");
     }
 
     /*.check.notAllNodes{

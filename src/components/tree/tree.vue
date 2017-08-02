@@ -46,7 +46,6 @@
         data () {
             return {
                 itemsShow: true,
-                search: null,
 
                 treeNodeOptions: {},
                 store: {
@@ -83,9 +82,6 @@
         },
 
         watch: {
-            search: function (val) {
-                this.store.filterNodes(val, this.options.search)
-            },
             treeData: {
                 handler: function (data, oldData) {
                     this.dealTreeData()

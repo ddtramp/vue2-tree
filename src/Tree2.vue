@@ -24,13 +24,11 @@
         data: function () {
             return {
                 options1: {
-                    showCheckbox: false,
-                    halfCheckedStatus: false,//控制父框是否需要半钩状态
+                    showCheckbox: true,
+                    halfCheckedStatus: true,    //控制父框是否需要半钩状态
 
                     lazy: true,
                     load: this.loadingChild,
-
-                    showSearch: false,
 
                     rootName: '我的组织',
 
@@ -63,13 +61,9 @@
                     dynamicSaveNode: this.saveNode,
                     // function handle
                     // return String
-                    leafIcon: this.leafIcon,
+                    leafIcon: this.leafIcon
 
-                    search: {
-                        useInitial: true,
-                        useEnglish: false,
-                        customFilter: null
-                    }
+
                 },
                 treeData1: []
             }
@@ -217,8 +211,8 @@
                 let node = {
                     id: 2,
                     label: '一级节点',
-                    visible: true,
-                    searched: false
+                    open: false,
+                    nodeSelectNotAll: false
                 }
                 if (!item.hasOwnProperty('children') || item.children.length === 0) {
                     await this.loadingChild(parent)

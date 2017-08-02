@@ -15,12 +15,7 @@ export default class TreeStore {
         }
         _traverseNodes(this.root)
 
-        this.pinyin = () => ''
-        if (this.options.showCheckbox) {
-            this.pinyin = require('chinese-to-pinyin')
-        }
     }
-
 
     /**
      * https://github.com/alonesuperman update this method
@@ -88,7 +83,7 @@ export default class TreeStore {
             }
 
             let key = this.__parseKey(node.key)
-
+debugger
             let parent = null;
             if (node.checked) { //打钩
                 if (key.parent) {
@@ -106,7 +101,7 @@ export default class TreeStore {
             } else { //去钩
                 if (key.parent) {
                     parent = this.getNode(key.parent)
-                    if (this.sameSilibingHalfChecked(false, parent, key.parent, key.current) === "none") { //返回true则全没钩，false为半钩
+                    if (this.sameSilibingHalfChecked(false, parent, key.parent, key.current) === "none") { //返回true则全钩，false为半钩
                         parent.checked = false
                         parent.nodeSelectNotAll = false
                     } else {
@@ -163,7 +158,7 @@ export default class TreeStore {
         let sbIds = []
         let currentNode = this.getNode(currentKey)
         parent.children.forEach(x => {
-            if (!currentNode.nodeSelectNotAll && x.key !== currentKey) sbIds.push(x.key) //除去当前节点的剩下节点
+            if ( x.key !== currentKey) sbIds.push(x.key) //除去当前节点的剩下节点
         })
 
         if (status) { //打钩
@@ -209,61 +204,8 @@ export default class TreeStore {
         }
         return true
     }
-    filterNodes(keyworld, searchOptions) {
-        const _filterNode = (val, node) => {
-            if (!val) return true
-            if (searchOptions.useEnglish) {
-                return node.label.indexOf(val) !== -1
-            } else {
-                return this.toPinYin(node.label, searchOptions.useInitial).indexOf(this.toPinYin(keyworld.toLowerCase(), searchOptions.useInitial, true)) !== -1
-            }
-        }
-
-        const _syncNodeStatus = (node) => {
-            let keys = this.__parseKey(node.key)
-            if (keys.parent) {
-                let parentNode = this.getNode(keys.parent)
-                if (node.visible) {
-                    parentNode.visible = node.visible
-                    _syncNodeStatus(parentNode)
-                }
-            }
-        }
-        let filterFunc = (searchOptions.customFilter && typeof(searchOptions.customFilter) === 'function') ? searchOptions.customFilter : _filterNode
-        this.datas.forEach(node => {
-            node.visible = filterFunc(keyworld, node)
-            node.searched = false
-            if (node.visible) {
-                if (!this.isNullOrEmpty(keyworld)) {
-                    node.searched = true
-                }
-                _syncNodeStatus(node)
-            }
-        })
-    }
     getNode(key) {
         return this.datas.get(key)
-    }
-    toPinYin(keyworld, useInitial) {
-        if (/^[a-zA-Z]/.test(keyworld)) {
-            return keyworld
-        }
-        let fullpinyin = this.pinyin(keyworld, {
-            filterChinese: true,
-            noTone: true
-        })
-        if (useInitial) {
-            let res = ''
-            fullpinyin.split(' ').forEach(w => {
-                if (!(/[a-zA-Z]/.test(w))) {
-                    res += w
-                } else {
-                    res += w.slice(0, 1)
-                }
-            })
-            return res
-        }
-        return fullpinyin
     }
     setData (node) {
         this.datas.set(node.key, node)

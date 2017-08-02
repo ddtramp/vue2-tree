@@ -22,15 +22,12 @@ i must say, this doc is terrible, but the function is really good
 
 * ie9,10,11,spartan
 
-__issues__
-
-* checkbox status fix later
-
-    showCheckbox: true,  
-    halfCheckedStatus: true
-
 
 notice: 
+
+*del search function*
+  
+  because the chinese-to-pinyin package too large, and you can achieve u own search or filter function， so i del this useless func
 
   loadingChild method
   
@@ -83,8 +80,6 @@ npm run build
         lazy: true,     // 是否是异步加载数据
         load: this.loadingChild, // 异步加载数据方法
         
-        showSearch: false, // 是否显示搜索
-        
         iconClass: {                        // custom icon class, Default
             close: 'icon-youjiantou',
             open: 'icon-xiajiantou',
@@ -118,13 +113,8 @@ npm run build
         // param { node }
         // return { String } , iconfont class name, default ''
         leafIcon: [Function],
-        
-        search: {
-          useInitial: true, //是否支持拼音首字母搜索
-          useEnglish: false, //是否是英文搜索
-          customFilter: null // 自定义节点过滤函数
-        }
-
+     }
+    
     /* 节点元素 */
     {
       id: 1,                    // 节点标志
@@ -177,6 +167,10 @@ and when some new feature is test ok, i will pull a new request to halower
 * https://github.com/alonesuperman
 
 ## Update History
+
+* fix halfcheck bug 
+  del search func          
+                                                                02082017
 
 * fix search bug, and require chinesetopinyin package           02082017
 

@@ -77,16 +77,10 @@
                     }
                 ],
                 options: {
-                    showSearch: true,
 
                     showCheckbox: false,
-                    halfCheckedStatus: false, //控制父框是否需要半钩状态
+                    halfCheckedStatus: false //控制父框是否需要半钩状态
 
-                    search: {
-                        useInitial: true,
-                        useEnglish: false,
-                        customFilter: null
-                    }
                 },
             }
         },

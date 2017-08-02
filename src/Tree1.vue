@@ -80,13 +80,8 @@
                     labelKey: 'name',
 
                     showCheckbox: true,
-                    halfCheckedStatus: true,//控制父框是否需要半钩状态
+                    halfCheckedStatus: true //控制父框是否需要半钩状态
 
-                    search: {
-                        useInitial: true,
-                        useEnglish: false,
-                        customFilter: null
-                    }
                 },
             }
         },
