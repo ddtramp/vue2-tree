@@ -8,7 +8,8 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-
+const CleanWebpackPlugin = require('clean-webpack-plugin')
+let rootPwd = `${__dirname}/../`
 
 var webpackConfig = merge(baseWebpackConfig, {
   entry: {
@@ -35,6 +36,11 @@ var webpackConfig = merge(baseWebpackConfig, {
   },
   externals: ['vue', 'chinese-to-pinyin', 'babel-polyfill'],
   plugins: [
+    // clean dist folder
+    new CleanWebpackPlugin(['dist'], {
+            "root": rootPwd,
+            "verbose": true
+    }),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
     new webpack.DefinePlugin({
       'process.env': config.bundle.env
