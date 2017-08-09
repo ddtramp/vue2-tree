@@ -194,6 +194,7 @@
 
                     // set Children
 //                    Vue.set(tem, 'children', generateKey(data, node.key));
+                    delete tem.leaf
                     Vue.set(tem, 'children', data);
 
                     Promise.resolve(data);

@@ -1,7 +1,7 @@
 {
   "name": "vue2-lazy-tree",
-  "version": "1.2.1",
-  "description": "Vue component, Tree component, support lazy-load data",
+  "version": "1.2.2",
+  "description": "Vue plugin, Tree component, support lazy-load data",
   "author": "jackwang <wangxichao001@gmail.com>",
   "repository": {
     "type": "git",
@@ -18,10 +18,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "node-sass": "^4.5.3",
-    "vue": "^2.3.3"
+    "vue": "^2.4.2"
   },
   "devDependencies": {
+    "node-sass": "^4.5.3",
     "autoprefixer": "^6.7.2",
     "axios": "^0.16.2",
     "babel-core": "^6.22.1",
@@ -64,11 +64,11 @@
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0"
   },
+  "license": "MIT",
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
   },
-  "license": "MIT",
   "browserslist": [
     "> 1%",
     "last 2 versions",
