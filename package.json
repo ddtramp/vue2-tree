@@ -1,6 +1,6 @@
 {
   "name": "vue2-lazy-tree",
-  "version": "1.2.2",
+  "version": "1.2.5",
   "description": "Vue plugin, Tree component, support lazy-load data",
   "author": "jackwang <wangxichao001@gmail.com>",
   "repository": {
@@ -53,7 +53,6 @@
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
     "url-loader": "^0.5.8",
-    "vue": "^2.3.3",
     "vue-loader": "^12.1.0",
     "vue-router": "^2.6.0",
     "vue-style-loader": "^3.0.1",

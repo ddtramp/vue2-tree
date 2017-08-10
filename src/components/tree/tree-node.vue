@@ -91,12 +91,6 @@
 <script>
     import Vue from 'vue'
 
-    Vue.directive('focus', {
-        update: function (el) {
-            el.focus()
-        }
-    })
-
     export default {
         name: 'treeNode',
         props: {
@@ -270,6 +264,14 @@
                     return false
                 }
                 return  item.children && item.children.length > 0  || this. options.hasOwnProperty('lazy') && this.options.lazy && !item.hasOwnProperty('loaded')
+            }
+        },
+        directives: {
+            // component autofocus directive
+            focus: {
+                update: function (el) {
+                    el.focus()
+                }
             }
         }
     }

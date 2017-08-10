@@ -83,7 +83,6 @@ export default class TreeStore {
             }
 
             let key = this.__parseKey(node.key)
-debugger
             let parent = null;
             if (node.checked) { //打钩
                 if (key.parent) {
