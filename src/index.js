@@ -38,6 +38,7 @@ ComboZTree.install = function(Vue) {
 const getParentNode = (node = {}, treeData = []) => {
     let tem;
     let postions = node.key.split('-');
+    positions.pop()
     for (let [index, item] of postions.entries()) {
         switch (index) {
             case 0:

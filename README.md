@@ -168,6 +168,8 @@ and when some new feature is test ok, i will pull a new request to halower
 
 ## Update History
 
+* fix getParentNode method                                      15082017
+
 * fix halfcheck bug 
   del search func          
                                                                 02082017
