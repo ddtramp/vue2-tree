@@ -8,6 +8,8 @@ i must say, this doc is terrible, but the function is really good
 
 ## features
 
+* node issue tip
+
 * normal tree
 
 * lazy loading 
@@ -113,6 +115,17 @@ npm run build
         // param { node }
         // return { String } , iconfont class name, default ''
         leafIcon: [Function],
+        
+        // show issue tip
+        warning: true,   
+        // warning config   
+        warningConfig: {
+            title: (item) => 'lalal...',
+            iconClass: (item) => 'icon-warning1',
+            style: (item) => {
+                return { color: 'red'}
+            }
+        }
      }
     
     /* 节点元素 */
@@ -167,6 +180,8 @@ and when some new feature is test ok, i will pull a new request to halower
 * https://github.com/alonesuperman
 
 ## Update History
+
+* add issue tip                                                 16082017
 
 * fix getParentNode method                                      15082017
 

@@ -61,9 +61,16 @@
                     dynamicSaveNode: this.saveNode,
                     // function handle
                     // return String
-                    leafIcon: this.leafIcon
+                    leafIcon: this.leafIcon,
 
-
+                    warning: true,
+                    warningConfig: {
+                        title: (item) => 'lalala...',
+                        iconClass: (item) => 'icon-warning1',
+                        style: (item) => {
+                            return { color: 'red'}
+                        }
+                    }
                 },
                 treeData1: []
             }
@@ -162,7 +169,6 @@
             },
             async loadingChild (node, index) {
                 try {
-//          let data = await axios.get('http://localhost:8082/child.json', {responseType: 'json'});
                     let data = await new Promise((resolve, reject) => {
                         setTimeout(() => {
                             let d = [
@@ -190,16 +196,12 @@
                             resolve(d)
                         }, 1000)
                     })
-                    let tem = getParentNode(node, this.treeData1)
+                    delete node.leaf
+                    Vue.set(node, 'children', data);
 
-                    // set Children
-//                    Vue.set(tem, 'children', generateKey(data, node.key));
-                    delete tem.leaf
-                    Vue.set(tem, 'children', data);
-
-                    Promise.resolve(data);
+                    return Promise.resolve(data);
                 } catch (e) {
-                    Promise.reject(e);
+                    return Promise.reject(e);
                 }
             },
 
@@ -208,7 +210,7 @@
                 console.log(node.key);
             },
             async addNode (item) {
-                let parent = getParentNode(item, this.treeData1)
+                let parent = item
                 let node = {
                     id: 2,
                     label: '一级节点',

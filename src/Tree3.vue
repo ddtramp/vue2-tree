@@ -24,8 +24,8 @@
         data: function () {
             return {
                 options1: {
-                    showCheckbox: true,
-                    halfCheckedStatus: true, //控制父框是否需要半钩状态
+                    showCheckbox: false,
+                    halfCheckedStatus: false, //控制父框是否需要半钩状态
 
                     lazy: true,
                     load: this.loadingChild,
@@ -172,7 +172,18 @@
                         searched: false
                     }
                 ]
+              for (let i = 6; i < 50; i++) {
+                    treeData.push(Object.assign({}, {
+                        label: '一级节点',
+                        type: 1,
 
+                        open: false,
+                        checked: false,
+                        nodeSelectNotAll: false,
+                        visible: true,
+                        searched: false
+                    }, { id: i}))
+                }
 //                this.treeData1 = this.generateKey(treeData, 0);
                 this.treeData1 = treeData
             },

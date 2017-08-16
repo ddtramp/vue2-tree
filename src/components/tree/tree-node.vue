@@ -64,7 +64,14 @@
                 <span
                     class="label"
                 >
-                    {{ item[options.labelKey] }}
+                    {{ item[options.labelKey] }} 
+                    <i 
+                        v-if="options.warning"
+                        class="iconfont  " 
+                        :class="warningClass(item)"
+                        :title="warningTitle(item)"
+                        :style="warningStyle(item)"
+                    ></i>
                 </span>
 
                 <i
@@ -264,6 +271,15 @@
                     return false
                 }
                 return  item.children && item.children.length > 0  || this. options.hasOwnProperty('lazy') && this.options.lazy && !item.hasOwnProperty('loaded')
+            },
+            warningClass (item) {
+                return this.options.warningConfig.iconClass(item)
+            },
+            warningTitle (item) {
+                return this.options.warningConfig.title(item)
+            },
+            warningStyle (item) {
+                return this.options.warningConfig.style(item)
             }
         },
         directives: {

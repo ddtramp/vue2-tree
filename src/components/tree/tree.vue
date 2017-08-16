@@ -73,8 +73,14 @@
                 dynamicAddFilter () { return true },
                 dynamicAddNode () {},
                 dynamicSaveNode () {},
-                leafIcon () { return '' }          // not required
+                leafIcon () { return '' },          // not required
 
+                warning: false,
+                warningConfig: {
+                    title: () => '',
+                    iconClass: () => '',
+                    style: () => ''
+                }
                 }, this.options)
 
             this.dealTreeData()
@@ -179,6 +185,26 @@
                 if ('leafIcon' in this.options) {
                     if (typeof this.options.leafIcon !== 'function') {
                         console.error('leafIcon must be Function')
+                    }
+                }
+
+                if ('warning' in this.options && this.options.warning ) {
+                    if ('warningConfig' in this.options) {
+                        if ('title' in this.options.warningConfig) {
+                            if (typeof this.options.warningConfig.title !== 'function') {
+                                console.error('Warning: warningConfig property title must be Function')
+                            }
+                        }
+                        if ('iconClass' in this.options.warningConfig) {
+                            if (typeof this.options.warningConfig.iconClass !== 'function') {
+                                console.error('Warning: warningConfig property iconClass must be Function')
+                            }
+                        }
+                        if ('style' in this.options.warningConfig) {
+                            if (typeof this.options.warningConfig.style !== 'function') {
+                                console.error('Warning: warningConfig property style must be Function')
+                            }
+                        }
                     }
                 }
             },
