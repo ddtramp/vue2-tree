@@ -59,8 +59,9 @@ npm run build
 
 ### How to use in u production
 
-    import { ZTree } from 'vue2-lazy-tree'
-    import './../dist/vue2-tree.min.css'
+
+    import { ZTree } from 'vue2-lazy-tree/dist/vue2-tree.min'
+    import 'vue2-lazy-tree/dist/vue2-tree.min.css'
     Vue.use(ZTree)
     
 ### Demo
